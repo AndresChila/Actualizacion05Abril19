@@ -1,0 +1,185 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="~/Controller/Tienda/MasterSuperAdmin.master.cs" Inherits="View_Tienda_MasterTienda" %>
+
+<%@ Register assembly="AjaxControlToolkit" namespace="AjaxControlToolkit" tagprefix="ajaxToolkit" %>
+
+<!DOCTYPE html>
+<html><script type="text/javascript">
+    function OnClientCancel() {
+        alert("Ha Cancelado Cerrar Sesión.");
+    }
+</script>
+<head runat="server">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>SCA: Superadmin</title>
+    <asp:ContentPlaceHolder id="head" runat="server">
+    </asp:ContentPlaceHolder>
+    <style type="text/css">
+        .auto-style1 {
+            width: 100%;
+        }
+        .auto-style2 {
+            width: 272px;
+            color: #33CCFF;
+            background-color: #FFFFFF;
+            text-align: center;
+        }
+        .auto-style3 {
+            height: 552px;
+            width: 629px;
+        }
+        .auto-style7 {
+            text-align: center;
+            width: 629px;
+            height: 29px;
+            background-color: #000099;
+        }
+        .auto-style14 {
+            text-align: left;
+        }
+        .auto-style4 {
+            width: 104%;
+            height: 389px;
+        }
+        .auto-style8 {
+            text-align: center;
+            width: 260px;
+            background-color: #0066CC;
+        }
+        .auto-style9 {
+            color: #000000;
+        }
+        .auto-style12 {
+            text-align: center;
+            width: 260px;
+            height: 5px;
+        }
+        .auto-style5 {
+            text-align: center;
+            width: 260px;
+        }
+
+        .auto-style10 {
+            text-decoration: none;
+        }
+        .auto-style11 {
+            text-align: center;
+            width: 260px;
+            height: 24px;
+        }
+        .auto-style13 {
+            text-align: center;
+            width: 260px;
+            height: 25px;
+        }
+        .auto-style15 {
+            background-color: #0033CC;
+            margin-top: 29px;
+        }
+    </style>
+</head>
+<body>
+    <form id="form1" runat="server">
+    <div>
+        <table class="auto-style1">
+            <tr>
+                <td class="auto-style2" rowspan="2">
+                     <br />
+                        <br />
+                     <asp:Button ID="B_Menu" runat="server" Text="o o o" />
+                    <asp:Panel ID="Panel2" runat="server" CssClass="auto-style15" Height="392px">
+                        <table class="auto-style4">
+                            <tr>
+                                <td class="auto-style8">
+                                    <asp:Label ID="L_SuperAdmin" runat="server" Font-Bold="True" Font-Size="XX-Large" Text="SUPER ADMIN" CssClass="auto-style9"></asp:Label>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="auto-style12">
+                                    <asp:Label ID="Label_Usuario" runat="server" Font-Size="Medium" CssClass="auto-style9"></asp:Label>
+                                    <br />
+                                    <br />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="auto-style5">
+                                    <asp:Label ID="L_Sede" runat="server" CssClass="auto-style9"></asp:Label>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="auto-style5">
+                                    <asp:LinkButton ID="LB_AgregarSede" runat="server" Font-Names="Engravers MT" Font-Size="Large" ForeColor="Black" OnClick="LinkButton2_Click" CssClass="auto-style10">Agregar Sede</asp:LinkButton>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="auto-style5">
+                                    <asp:LinkButton ID="LB_CRUDAdmin" runat="server" Font-Names="Engravers MT" Font-Size="Large" ForeColor="Black" CssClass="auto-style10" OnClick="LinkButton3_Click">CRUD Admin</asp:LinkButton>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="auto-style5">
+                                    <asp:LinkButton ID="LB_CRUDProducto" runat="server" Font-Names="Engravers MT" Font-Size="Large" ForeColor="Black" OnClick="LinkButton4_Click" CssClass="auto-style10">CRUD Producto</asp:LinkButton>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="auto-style11">
+                                    <asp:LinkButton ID="LB_Conflictos" runat="server" Font-Names="Engravers MT" Font-Size="Large" ForeColor="Black" CssClass="auto-style10" OnClick="LinkButton5_Click">Conflictos</asp:LinkButton>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="auto-style13">
+                                    <asp:LinkButton ID="LB_Asignar" runat="server" Font-Names="Engravers MT" Font-Size="Large" ForeColor="Black" OnClick="LinkButton6_Click" CssClass="auto-style10">Asignar </asp:LinkButton>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="auto-style5">
+                                    <asp:LinkButton ID="LB_Idioma" runat="server" Font-Names="Engravers MT" Font-Size="Large" ForeColor="Black" OnClick="LinkButton6_Click" CssClass="auto-style10">Idioma </asp:LinkButton>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="auto-style5">
+                                    <asp:Button ID="B_CerrarSesion" runat="server" Text="CERRAR SESIÓN" Width="120px" OnClick="B_CerrarSesion_Click" />
+                                    <ajaxToolkit:ConfirmButtonExtender ID="B_CerrarSesion_ConfirmButtonExtender" runat="server" BehaviorID="B_CerrarSesion_ConfirmButtonExtender" ConfirmText="¿Está seguro que desea cerrar sesión?" OnClientCancel="OnClientCancel" TargetControlID="B_CerrarSesion" />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>&nbsp;</td>
+                            </tr>
+                            <asp:ScriptManager ID="ScriptManager1" runat="server">
+                            </asp:ScriptManager>
+                        </table>
+                    </asp:Panel>
+                     <ajaxToolkit:RoundedCornersExtender ID="Panel2_RoundedCornersExtender" runat="server" BehaviorID="Panel2_RoundedCornersExtender" BorderColor="Blue" Color="Blue" Radius="10" TargetControlID="Panel2" />
+                    <ajaxToolkit:CollapsiblePanelExtender ID="Panel2_CollapsiblePanelExtender" runat="server" BehaviorID="Panel2_CollapsiblePanelExtender" ExpandDirection="Horizontal" TargetControlID="Panel2" CollapseControlID="B_Menu" Collapsed="True" CollapsedSize="0" ExpandControlID="B_Menu" ExpandedSize="250" SuppressPostBack="True" />
+                </td>
+                <td class="auto-style7">
+                    <asp:Label ID="Label3" runat="server" Font-Bold="False" Font-Names="Papyrus" ForeColor="White" Text="SCA"></asp:Label>
+                    <asp:Panel ID="Panel1" runat="server" BackColor="#FF5050" Height="46px" Width="317px" BorderColor="#CC0000">
+                        <div class="auto-style14">
+                            <asp:Label ID="Label4" runat="server" Text="Conflictos Por Resolver!                                                   "></asp:Label>
+                            <ajaxToolkit:RoundedCornersExtender ID="Label4_RoundedCornersExtender" runat="server" BehaviorID="Label4_RoundedCornersExtender" Radius="50" TargetControlID="Label4" />
+                            <asp:Label ID="L_c1" runat="server" BackColor="Red" ForeColor="Black"></asp:Label>
+                            <asp:LinkButton ID="IR_Conflictos" runat="server" OnClick="IR_Conflictos_Click">IR</asp:LinkButton>
+                            <div>
+                                <asp:Label ID="Label5" runat="server" Text="Asignaciones Pendientes:     "></asp:Label>
+                                <asp:Label ID="L_c" runat="server" BackColor="Red" ForeColor="Black"></asp:Label>
+                                <asp:LinkButton ID="IR_Asignaciones" runat="server" OnClick="IR_Asignaciones_Click">IR</asp:LinkButton>
+                            </div>
+                        </div>
+                    </asp:Panel>
+                    <ajaxToolkit:RoundedCornersExtender ID="Panel1_RoundedCornersExtender" runat="server" BehaviorID="Panel1_RoundedCornersExtender" BorderColor="DarkBlue" Color="DarkBlue" Radius="10" TargetControlID="Panel1" />
+                    <ajaxToolkit:AlwaysVisibleControlExtender ID="Panel1_AlwaysVisibleControlExtender" runat="server" BehaviorID="Panel1_AlwaysVisibleControlExtender" HorizontalSide="Right" TargetControlID="Panel1" VerticalSide="Middle" />
+                </td>
+            </tr>
+            <tr>
+                <td class="auto-style3"> <asp:ContentPlaceHolder id="ContentPlaceHolder2" runat="server">
+        
+                </asp:ContentPlaceHolder></td>
+            </tr>
+        </table>
+        <asp:ContentPlaceHolder id="ContentPlaceHolder1" runat="server">
+        
+        </asp:ContentPlaceHolder>
+    </div>
+    </form>
+</body>
+</html>

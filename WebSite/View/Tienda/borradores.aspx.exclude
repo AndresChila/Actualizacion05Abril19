@@ -1,0 +1,99 @@
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="borradores.aspx.cs" Inherits="View_Tienda_borradores" %>
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <style type="text/css">
+
+        .auto-style2 {
+            width: 99%;
+            background-color: #0066FF;
+            height: 328px;
+            margin-top: 0px;
+        }
+        .auto-style10 {
+            text-align: center;
+        }
+        .auto-style9 {
+            color: #000000;
+        }
+        .auto-style12 {
+            text-decoration: none;
+        }
+        </style>
+</head>
+<body>
+    <form id="form1" runat="server">
+                <table class="auto-style2">
+                    <tr>
+                        <td class="auto-style10">
+                                <asp:Label ID="L_Vendedor" runat="server" Font-Bold="True" Font-Size="XX-Large" Text="VENDEDOR" CssClass="auto-style9"></asp:Label>
+                            </td>
+                    </tr>
+                    <tr>
+                        <td class="auto-style10">
+                            <asp:Label ID="Label_usuario" runat="server"></asp:Label>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="auto-style10">
+                            <asp:Label ID="Label_Sede" runat="server"></asp:Label>
+                            <br />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="auto-style10">&nbsp;</td>
+                    </tr>
+                    <tr>
+                        <td class="auto-style10">
+                                <asp:LinkButton ID="LB_NuevaVenta" runat="server" Font-Names="Engravers MT" Font-Size="Large" ForeColor="Black" OnClick="LinkButton2_Click" CssClass="auto-style12">Nueva Venta</asp:LinkButton>
+                            </td>
+                    </tr>
+                    <tr>
+                        <td class="auto-style10">
+                                <asp:LinkButton ID="LB_AgregarCliente" runat="server" Font-Names="Engravers MT" Font-Size="Large" ForeColor="Black" OnClick="LinkButton3_Click" CssClass="auto-style12">AGREGAR CLIENTE</asp:LinkButton>
+                            </td>
+                    </tr>
+                    <tr>
+                        <td class="auto-style10">
+                                <asp:LinkButton ID="LB_MisVentas" runat="server" Font-Names="Engravers MT" Font-Size="Large" ForeColor="Black" OnClick="LinkButton4_Click" CssClass="auto-style12">MIS VENTAS</asp:LinkButton>
+                            </td>
+                    </tr>
+                    <tr>
+                        <td class="auto-style10">
+                                <asp:LinkButton ID="LB_Bodega" runat="server" Font-Names="Engravers MT" Font-Size="Large" ForeColor="Black" OnClick="LinkBodega_Click" CssClass="auto-style12">BODEGA</asp:LinkButton>
+                            </td>
+                    </tr>
+                    <tr>
+                        <td class="auto-style10">
+                                <asp:LinkButton ID="LB_VerFacturas" runat="server" Font-Names="Engravers MT" Font-Size="Large" ForeColor="Black" OnClick="LinkButton5_Click" CssClass="auto-style12">Ver Facturas</asp:LinkButton>
+                            </td>
+                    </tr>
+                    <tr>
+                        <td class="auto-style10">
+                                <asp:LinkButton ID="LB_Abonos" runat="server" Font-Names="Engravers MT" Font-Size="Large" ForeColor="Black" OnClick="LinkButton6_Click" CssClass="auto-style12">ABONOS</asp:LinkButton>
+                            </td>
+                    </tr>
+                    <tr>
+                        <td class="auto-style10">
+                            &nbsp;</td>
+                    </tr>
+                    <tr>
+                        <td class="auto-style10">
+                            <asp:Button ID="B_CerrarSesion" runat="server" Text="CERRAR SESIÓN" OnClick="B_CerrarSesion_Click" Width="120px" />
+                        </td>
+                    </tr>
+                </table>
+        <div>
+        </div>
+    </form>
+</body>
+</html>
+
+ADMIN [Label_usuario][Label_Sede]
+ Pedir ProductosPedir ProductosPedir ProductosVER PEDIDOSVER PEDIDOSVER PEDIDOSRECIBIR PEDIDOSRECIBIR PEDIDOSRECIBIR PEDIDOSBODEGABODEGABODEGACRUD VENDEDORCRUD VENDEDORCRUD VENDEDOR  
+
+
