@@ -12,7 +12,7 @@ namespace Logica
 
     public class ValidacionesCrudAdmin
     {
-        String msj1, msj2, msj3, msj4, msj5, msj6, msj7, msj8, msj9;
+        //String msj1, msj2, msj3, msj4, msj5, msj6, msj7, msj8, msj9;
         Hashtable compIdiomaa = new Hashtable();
         
         Usuario usuario = new Usuario();        
@@ -24,21 +24,22 @@ namespace Logica
 
         public ValidacionesCrudAdmin(string idioma)
         {
-            mensajesTrad(idioma, 14);
-            msj1 = compIdiomaa["1"].ToString();
-            msj2 = compIdiomaa["2"].ToString();
-            msj3 = compIdiomaa["3"].ToString();
-            msj4 = compIdiomaa["4"].ToString();
-            msj5 = compIdiomaa["5"].ToString();
-            msj6 = compIdiomaa["6"].ToString();
-            msj7 = compIdiomaa["7"].ToString();
-            msj8 = compIdiomaa["8"].ToString();
-            msj9 = compIdiomaa["9"].ToString();
+            
+            //msj1 = compIdiomaa["1"].ToString();
+            //msj2 = compIdiomaa["2"].ToString();
+            //msj3 = compIdiomaa["3"].ToString();
+            //msj4 = compIdiomaa["4"].ToString();
+            //msj5 = compIdiomaa["5"].ToString();
+            //msj6 = compIdiomaa["6"].ToString();
+            //msj7 = compIdiomaa["7"].ToString();
+            //msj8 = compIdiomaa["8"].ToString();
+            //msj9 = compIdiomaa["9"].ToString();
         }
 
         public ValidacionesCrudAdmin(string nombrea, string cedulaa, string correoa, string direcciona, string telefonoa, string dseleccionadoa, string dsexoa, string clave,
-            string nombree, string cedulae, string correoe, string direccione, string telefonoe, string dseleccionadoe, string dsexoe, string clavee, string accion)
+            string nombree, string cedulae, string correoe, string direccione, string telefonoe, string dseleccionadoe, string dsexoe, string clavee, string accion, string idioma)
         {
+            compIdiomaa = mensajesTrad(idioma, 14);
             this.nombre = nombrea;
             this.cedula = cedulaa;
             this.direccion = direcciona;
@@ -100,7 +101,7 @@ namespace Logica
         {
             if (cedula == "" || nombre == "" || clave == "" || direccion == "" || telefono == "" || correo == "")
             {
-                mensaje = msj1;
+                mensaje = compIdiomaa["1"].ToString();
                 return false;
             }
             else
@@ -119,7 +120,7 @@ namespace Logica
             }
             else
             {
-                mensaje = msj2;
+                mensaje = compIdiomaa["2"].ToString();
                 return false;
             }
         }
@@ -134,14 +135,14 @@ namespace Logica
                 }
                 else
                 {
-                    mensaje = msj3;
+                    mensaje = compIdiomaa["3"].ToString();
                     return false;
                 }
                 
             }
             catch (Exception)
             {
-                mensaje = msj2;
+                mensaje = compIdiomaa["2"].ToString(); ;
                 return false;
             }
         }
@@ -154,7 +155,7 @@ namespace Logica
             }
             catch (Exception)
             {
-                mensaje = msj4;
+                mensaje = compIdiomaa["4"].ToString();
                 return false;
             }
         }
@@ -166,7 +167,7 @@ namespace Logica
             {
                 if (s.Sede == sedeSeleccionada && s.RolId == 2)
                 {
-                    mensaje = msj6;
+                    mensaje = compIdiomaa["6"].ToString();
                     return false;
                 }
             }
@@ -177,7 +178,7 @@ namespace Logica
         {
             if (usuario.Cedula <= 0 )
             {
-                mensaje = msj7;
+                mensaje = compIdiomaa["7"].ToString();
                 return false;
             }
             return true;
@@ -204,7 +205,7 @@ namespace Logica
                                     usuario.Telefono = long.Parse(telefono);
                                     if (usuario.Telefono <= 0)
                                     {
-                                        mensaje = msj8;
+                                        mensaje = compIdiomaa["8"].ToString();
                                         return mensaje;
                                     }
                                     usuario.Sexo = dsexo;
@@ -221,7 +222,7 @@ namespace Logica
                                     }
                                     else
                                     {
-                                        return mensaje = msj5;
+                                        return mensaje = compIdiomaa["5"].ToString();
                                     }
                                     
                                 }
@@ -263,7 +264,7 @@ namespace Logica
         {
             if (cedulae == "" || nombree == "" || clavee == "" || direccione == "" || telefonoe == "" || correoe == "")
             {
-                mensaje = msj9;
+                mensaje = compIdiomaa["9"].ToString();
                 return false;
             }
             else
@@ -387,11 +388,12 @@ namespace Logica
         }
 
         //int kIdiomaa;
-        public void mensajesTrad(string idioma, int constante)
+        public Hashtable mensajesTrad(string idioma, int constante)
         {
             DataTable comp = new DataTable();
             DataTable idi = new DataTable();
             DAOUsuario dao = new DAOUsuario();
+            Hashtable a = new Hashtable();
             idi = dao.traerIdioma();
             for (int i = 0; i < idi.Rows.Count; i++)
             {
@@ -403,8 +405,9 @@ namespace Logica
             comp = dao.traerMensajes(kIdioma, constante);
             for (int i = 0; i < comp.Rows.Count; i++)
             {
-                compIdiomaa.Add(comp.Rows[i]["msj"].ToString(), comp.Rows[i]["texto"].ToString());
+                a.Add(comp.Rows[i]["msj"].ToString(), comp.Rows[i]["texto"].ToString());
             }
+            return a;
         }
     }
 }

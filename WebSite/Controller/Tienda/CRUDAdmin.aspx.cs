@@ -53,14 +53,22 @@ public partial class View_Tienda_CRUDAdmi : System.Web.UI.Page
         B_Cancelar.Text = compIdioma[B_Cancelar.ID].ToString();
         B_Cancelar0.Text = compIdioma[B_Cancelar0.ID].ToString();
         B_Actualizar.Text = compIdioma[B_Actualizar.ID].ToString();
-        L_GVAdmin.Text = compIdioma[L_GVAdmin.ID].ToString();
-        GV_Productos.HeaderRow.Cells[0].Text = compIdioma["GV_Productos_Column0"].ToString();
-        GV_Productos.HeaderRow.Cells[1].Text = compIdioma["GV_Productos_Column1"].ToString();
-        GV_Productos.HeaderRow.Cells[2].Text = compIdioma["GV_Productos_Column2"].ToString();
-        GV_Productos.HeaderRow.Cells[3].Text = compIdioma["GV_Productos_Column3"].ToString();
-        GV_Productos.HeaderRow.Cells[4].Text = compIdioma["GV_Productos_Column4"].ToString();
-        GV_Productos.HeaderRow.Cells[5].Text = compIdioma["GV_Productos_Column5"].ToString();
-        GV_Productos.HeaderRow.Cells[6].Text = compIdioma["GV_Productos_Column6"].ToString();
+        
+        try
+        {
+            L_GVAdmin.Text = compIdioma[L_GVAdmin.ID].ToString();
+            GV_Productos.HeaderRow.Cells[0].Text = compIdioma["GV_Productos_Column0"].ToString();
+            GV_Productos.HeaderRow.Cells[1].Text = compIdioma["GV_Productos_Column1"].ToString();
+            GV_Productos.HeaderRow.Cells[2].Text = compIdioma["GV_Productos_Column2"].ToString();
+            GV_Productos.HeaderRow.Cells[3].Text = compIdioma["GV_Productos_Column3"].ToString();
+            GV_Productos.HeaderRow.Cells[4].Text = compIdioma["GV_Productos_Column4"].ToString();
+            GV_Productos.HeaderRow.Cells[5].Text = compIdioma["GV_Productos_Column5"].ToString();
+            GV_Productos.HeaderRow.Cells[6].Text = compIdioma["GV_Productos_Column6"].ToString();
+        }
+        catch(Exception ex)
+        {
+
+        }
         DDL_Sexo.Items.Add(compIdioma["DDL_Sexo_Item0"].ToString());
         DDL_Sexo0.Items.Add(compIdioma["DDL_Sexo_Item0"].ToString());
         DDL_Sexo.Items.Add(compIdioma["DDL_Sexo_Item1"].ToString());
@@ -79,7 +87,7 @@ public partial class View_Tienda_CRUDAdmi : System.Web.UI.Page
         ValidacionesCrudAdmin val = new ValidacionesCrudAdmin(TB_Nombre.Text.ToString(), TB_Cedula.Text.ToString(), TB_Correo.Text.ToString(), TB_Direccion.Text.ToString(),
                                                                   TB_Telefono.Text.ToString(), DDL_Sedes.SelectedValue.ToString(), DDL_Sexo.SelectedValue.ToString(), TB_Clave.Text.ToString(),
                                                                   TB_Nombre0.ToString(), TB_Cedula0.ToString(), TB_Correo0.ToString(), TB_Direccion0.ToString(),
-                                                                  TB_Telefono0.ToString(), DDL_Sedes0.SelectedValue, DDL_Sexo0.SelectedValue, TB_Clave0.Text.ToString(), accion);
+                                                                  TB_Telefono0.ToString(), DDL_Sedes0.SelectedValue, DDL_Sexo0.SelectedValue, TB_Clave0.Text.ToString(), accion, Session["idioma"].ToString());
 #pragma warning disable CS0618 // Type or member is obsolete
         RegisterStartupScript("mensaje", "<script type='text/javascript'>alert('" + val.devuelvemensaje() + "');</script>");
 #pragma warning restore CS0618 // Type or member is obsolete
@@ -90,14 +98,20 @@ public partial class View_Tienda_CRUDAdmi : System.Web.UI.Page
         usu = val.traerAdmins();
         GV_Productos.DataSource = usu;
         GV_Productos.DataBind();
+        try
+        {
+            GV_Productos.HeaderRow.Cells[0].Text = compIdioma["GV_Productos_Column0"].ToString();
+            GV_Productos.HeaderRow.Cells[1].Text = compIdioma["GV_Productos_Column1"].ToString();
+            GV_Productos.HeaderRow.Cells[2].Text = compIdioma["GV_Productos_Column2"].ToString();
+            GV_Productos.HeaderRow.Cells[3].Text = compIdioma["GV_Productos_Column3"].ToString();
+            GV_Productos.HeaderRow.Cells[4].Text = compIdioma["GV_Productos_Column4"].ToString();
+            GV_Productos.HeaderRow.Cells[5].Text = compIdioma["GV_Productos_Column5"].ToString();
+            GV_Productos.HeaderRow.Cells[6].Text = compIdioma["GV_Productos_Column6"].ToString();
+        }
+        catch (Exception ez)
+        {
 
-        GV_Productos.HeaderRow.Cells[0].Text = compIdioma["GV_Productos_Column0"].ToString();
-        GV_Productos.HeaderRow.Cells[1].Text = compIdioma["GV_Productos_Column1"].ToString();
-        GV_Productos.HeaderRow.Cells[2].Text = compIdioma["GV_Productos_Column2"].ToString();
-        GV_Productos.HeaderRow.Cells[3].Text = compIdioma["GV_Productos_Column3"].ToString();
-        GV_Productos.HeaderRow.Cells[4].Text = compIdioma["GV_Productos_Column4"].ToString();
-        GV_Productos.HeaderRow.Cells[5].Text = compIdioma["GV_Productos_Column5"].ToString();
-        GV_Productos.HeaderRow.Cells[6].Text = compIdioma["GV_Productos_Column6"].ToString();
+        }
     }
 
     protected void B_Actualizar_Click(object sender, EventArgs e)
@@ -106,7 +120,7 @@ public partial class View_Tienda_CRUDAdmi : System.Web.UI.Page
         ValidacionesCrudAdmin val = new ValidacionesCrudAdmin(TB_Nombre.Text.ToString(), TB_Cedula.Text.ToString(), TB_Correo.Text.ToString(), TB_Direccion.Text.ToString(),
                                                               TB_Telefono.Text.ToString(), DDL_Sedes.SelectedValue.ToString(), DDL_Sexo.SelectedValue.ToString(), TB_Clave.Text.ToString(),
                                                               TB_Nombre0.Text.ToString(), TB_Cedula0.Text.ToString(), TB_Correo0.Text.ToString(), TB_Direccion0.Text.ToString(),
-                                                              TB_Telefono0.Text.ToString(), DDL_Sedes0.SelectedValue, DDL_Sexo0.SelectedValue, TB_Clave0.Text.ToString(), accion);
+                                                              TB_Telefono0.Text.ToString(), DDL_Sedes0.SelectedValue, DDL_Sexo0.SelectedValue, TB_Clave0.Text.ToString(), accion, Session["idioma"].ToString());
 #pragma warning disable CS0618 // Type or member is obsolete
         RegisterStartupScript("mensaje", "<script type='text/javascript'>alert('" + val.devuelvemensaje() + "');</script>");
 #pragma warning restore CS0618 // Type or member is obsolete
@@ -159,7 +173,7 @@ public partial class View_Tienda_CRUDAdmi : System.Web.UI.Page
         ValidacionesCrudAdmin val = new ValidacionesCrudAdmin(TB_Nombre.Text.ToString(), TB_Cedula.Text.ToString(), TB_Correo.Text.ToString(), TB_Direccion.Text.ToString(),
                                                              TB_Telefono.Text.ToString(), DDL_Sedes.SelectedValue.ToString(), DDL_Sexo.SelectedValue.ToString(), TB_Clave.Text.ToString(),
                                                              TB_Nombre0.Text.ToString(), TB_Cedula0.Text.ToString(), TB_Correo0.Text.ToString(), TB_Direccion0.Text.ToString(),
-                                                             TB_Telefono0.Text.ToString(), DDL_Sedes0.SelectedValue, DDL_Sexo0.SelectedValue, TB_Clave0.Text.ToString(), accion);
+                                                             TB_Telefono0.Text.ToString(), DDL_Sedes0.SelectedValue, DDL_Sexo0.SelectedValue, TB_Clave0.Text.ToString(), accion, Session["idioma"].ToString());
         Usuario u = new Usuario();
         u = val.paracomandogrid(e.CommandName, e.CommandArgument.ToString());
         traerEditar(u);
@@ -173,13 +187,20 @@ public partial class View_Tienda_CRUDAdmi : System.Web.UI.Page
         usu = llenarGV.traerAdmins();
         GV_Productos.DataSource = usu;
         GV_Productos.DataBind();
-        GV_Productos.HeaderRow.Cells[0].Text = compIdioma["GV_Productos_Column0"].ToString();
-        GV_Productos.HeaderRow.Cells[1].Text = compIdioma["GV_Productos_Column1"].ToString();
-        GV_Productos.HeaderRow.Cells[2].Text = compIdioma["GV_Productos_Column2"].ToString();
-        GV_Productos.HeaderRow.Cells[3].Text = compIdioma["GV_Productos_Column3"].ToString();
-        GV_Productos.HeaderRow.Cells[4].Text = compIdioma["GV_Productos_Column4"].ToString();
-        GV_Productos.HeaderRow.Cells[5].Text = compIdioma["GV_Productos_Column5"].ToString();
-        GV_Productos.HeaderRow.Cells[6].Text = compIdioma["GV_Productos_Column6"].ToString();
+        try
+        {
+            GV_Productos.HeaderRow.Cells[0].Text = compIdioma["GV_Productos_Column0"].ToString();
+            GV_Productos.HeaderRow.Cells[1].Text = compIdioma["GV_Productos_Column1"].ToString();
+            GV_Productos.HeaderRow.Cells[2].Text = compIdioma["GV_Productos_Column2"].ToString();
+            GV_Productos.HeaderRow.Cells[3].Text = compIdioma["GV_Productos_Column3"].ToString();
+            GV_Productos.HeaderRow.Cells[4].Text = compIdioma["GV_Productos_Column4"].ToString();
+            GV_Productos.HeaderRow.Cells[5].Text = compIdioma["GV_Productos_Column5"].ToString();
+            GV_Productos.HeaderRow.Cells[6].Text = compIdioma["GV_Productos_Column6"].ToString();
+        }
+        catch(Exception es)
+        {
+
+        }
     }
 
     protected void B_Cancelar_Click(object sender, EventArgs e)

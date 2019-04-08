@@ -11,6 +11,7 @@ public partial class View_Tienda_AddIdioma : System.Web.UI.Page
 {
     List<string> compAct = new List<string>();
     List<string> compViejo= new List<string>();
+    List<string> listaVista = new List<string>();
     AddIdioma add;
     Hashtable compIdioma = new Hashtable();
     protected void Page_Load(object sender, EventArgs e)
@@ -30,6 +31,9 @@ public partial class View_Tienda_AddIdioma : System.Web.UI.Page
         Label7.Text = compIdioma[Label7.ID].ToString();
         B_Actualizar.Text = compIdioma[B_Actualizar.ID].ToString();
         Button1.Text = compIdioma[Button1.ID].ToString();
+        L_VistaT.Text = compIdioma[L_VistaT.ID].ToString();
+        L_VistaA.Text = compIdioma[L_VistaA.ID].ToString();
+
     }
 
     protected void B_Comprobar_Click(object sender, EventArgs e)

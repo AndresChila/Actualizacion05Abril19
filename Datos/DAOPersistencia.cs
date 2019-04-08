@@ -84,9 +84,7 @@ namespace Datos
                     return true;
                 }
                 else
-                {
-                    db.Entry(a).State = EntityState.Modified;
-                    db.SaveChanges();
+                {                   
                     return false;
                 }
             }

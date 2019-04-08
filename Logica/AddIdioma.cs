@@ -235,5 +235,12 @@ namespace Logica
             }
             return compIdioma;
         }
+        public List<string> ParaListaVista()
+        {
+            List<string> lista = new List<string>();
+
+            return lista;
+        }
     }
+    
 }

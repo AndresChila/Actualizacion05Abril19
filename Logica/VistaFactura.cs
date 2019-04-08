@@ -57,7 +57,14 @@ namespace Logica
 
         public string devuelveMensaje()
         {
-            return mensaje;
+            if(mensaje == null)
+            {
+                return ("...");
+            }
+            else
+            {
+                return mensaje;
+            }            
         }
 
         public DS_FacturaNueva obtenerInforme(string idioma)

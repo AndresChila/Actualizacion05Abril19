@@ -70,11 +70,17 @@
     <asp:Panel ID="Panel2" runat="server" BorderColor="#0066FF" BorderStyle="Double" Height="99px">
         <table class="auto-style1">
             <tr>
-                <td class="auto-style20" colspan="2"><strong>
+                <td class="auto-style20" colspan="3"><strong>
                     <asp:Label ID="L_Traducir" runat="server" CssClass="auto-style15" Text="Traducir"></asp:Label>
                     </strong></td>
             </tr>
             <tr>
+                <td class="auto-style21">
+                    <asp:Label ID="L_VistaT" runat="server"></asp:Label>
+                    <br />
+                    <asp:DropDownList ID="DDL_VistaT" runat="server">
+                    </asp:DropDownList>
+                </td>
                 <td class="auto-style21">
                     <asp:Label ID="L_Actual" runat="server" Text="Actual: "></asp:Label>
                     <br />
@@ -88,7 +94,7 @@
                 </td>
             </tr>
             <tr>
-                <td class="auto-style20" colspan="2">
+                <td class="auto-style20" colspan="3">
                     <asp:Button ID="B_Guardar" runat="server" Enabled="False" OnClick="B_Guardar_Click" Text="Guardar" />
                 </td>
             </tr>
@@ -98,13 +104,19 @@
     <asp:Panel ID="Panel3" runat="server" BorderColor="#0066FF" BorderStyle="Double">
         <table class="auto-style1">
             <tr>
-                <td class="auto-style20" colspan="2">
+                <td class="auto-style20" colspan="3">
                     <strong>
                     <asp:Label ID="L_Actualizar" runat="server" CssClass="auto-style24" Text="Actualizar"></asp:Label>
                     </strong>
                 </td>
             </tr>
             <tr>
+                <td class="auto-style22">
+                    <asp:Label ID="L_VistaA" runat="server"></asp:Label>
+                    <br />
+                    <asp:DropDownList ID="DDL_VistaA" runat="server">
+                    </asp:DropDownList>
+                </td>
                 <td class="auto-style22">
                     <asp:Label ID="Label6" runat="server" Text="Actual: "></asp:Label>
                     <br />
@@ -118,7 +130,7 @@
                 </td>
             </tr>
             <tr>
-                <td class="auto-style20" colspan="2">
+                <td class="auto-style20" colspan="3">
                     <asp:Button ID="B_Actualizar" runat="server" OnClick="B_Actualizar_Click" Text="Actualizar" />
                 </td>
             </tr>
