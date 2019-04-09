@@ -25,10 +25,19 @@ public partial class View_Tienda_AgregarSed : System.Web.UI.Page
         L_Ciudad.Text = compIdioma[L_Ciudad.ID].ToString();
         L_Direccion.Text = compIdioma[L_Direccion.ID].ToString();
         B_Agregar_Sede.Text = compIdioma[B_Agregar_Sede.ID].ToString();
-        GV_Sedes.HeaderRow.Cells[0].Text = compIdioma["GV_Sedes_Column0"].ToString();
-        GV_Sedes.HeaderRow.Cells[1].Text = compIdioma["GV_Sedes_Column1"].ToString();
-        GV_Sedes.HeaderRow.Cells[2].Text = compIdioma["GV_Sedes_Column2"].ToString();
-        GV_Sedes.HeaderRow.Cells[3].Text = compIdioma["GV_Sedes_Column3"].ToString();
+        L_AgregarSede.Text = compIdioma[L_AgregarSede.ID].ToString();
+        L_VerEliminarSedes.Text = compIdioma[L_VerEliminarSedes.ID].ToString();
+        try
+        {
+            GV_Sedes.HeaderRow.Cells[0].Text = compIdioma["GV_Sedes_Column0"].ToString();
+            GV_Sedes.HeaderRow.Cells[1].Text = compIdioma["GV_Sedes_Column1"].ToString();
+            GV_Sedes.HeaderRow.Cells[2].Text = compIdioma["GV_Sedes_Column2"].ToString();
+            GV_Sedes.HeaderRow.Cells[3].Text = compIdioma["GV_Sedes_Column3"].ToString();
+        }
+        catch(Exception ex)
+        {
+
+        }
         
     }
 

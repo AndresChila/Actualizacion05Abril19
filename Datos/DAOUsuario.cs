@@ -2777,7 +2777,7 @@ namespace Datos
                 }
             }
         }
-        public DataTable traerTodosMensajesUnIdioma(int idioma)
+        public DataTable traerTodosMensajesUnIdioma(int idioma, int clase)
         {
             DataTable todosMensajes = new DataTable();
             NpgsqlConnection conection = new NpgsqlConnection(ConfigurationManager.ConnectionStrings["Postgres"].ConnectionString);
@@ -2787,6 +2787,7 @@ namespace Datos
                 NpgsqlDataAdapter dataAdapter = new NpgsqlDataAdapter("traduccion.f_filtrar_todos_mensajes_solo_idioma", conection);
                 dataAdapter.SelectCommand.CommandType = CommandType.StoredProcedure;
                 dataAdapter.SelectCommand.Parameters.Add("_idioma", NpgsqlDbType.Integer).Value = idioma;
+                dataAdapter.SelectCommand.Parameters.Add("_clase", NpgsqlDbType.Integer).Value = clase;
                 conection.Open();
                 dataAdapter.Fill(todosMensajes);
             }
@@ -2924,6 +2925,31 @@ namespace Datos
                     conection.Close();
                 }
             }
+        }
+        public DataTable traerViews(int idioma)
+        {
+            DataTable views = new DataTable();
+            NpgsqlConnection conection = new NpgsqlConnection(ConfigurationManager.ConnectionStrings["Postgres"].ConnectionString);
+            try
+            {
+                NpgsqlDataAdapter dataAdapter = new NpgsqlDataAdapter("traduccion.f_consultar_formularios", conection);
+                dataAdapter.SelectCommand.CommandType = CommandType.StoredProcedure;
+                dataAdapter.SelectCommand.Parameters.Add("_idioma", NpgsqlDbType.Integer).Value = idioma;
+                conection.Open();
+                dataAdapter.Fill(views);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                if (conection != null)
+                {
+                    conection.Close();
+                }
+            }
+            return views;
         }
     }
 

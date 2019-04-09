@@ -218,7 +218,7 @@ namespace Logica
 
                                     if(AgregarAdmin(usuario) == true)
                                     {
-                                        return mensaje = "Se agregó correctamente el Admin";
+                                        return mensaje = compIdiomaa["10"].ToString(); ;
                                     }
                                     else
                                     {

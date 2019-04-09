@@ -40,12 +40,22 @@ public partial class View_Tienda_CRUDProduc : System.Web.UI.Page
         B_AgregarProducto.Text = compIdioma[B_AgregarProducto.ID].ToString();
         B_EditarProducto.Text = compIdioma[B_EditarProducto.ID].ToString();
         B_Cancelar.Text = compIdioma[B_Cancelar.ID].ToString();
-        GV_Productos.HeaderRow.Cells[0].Text = compIdioma["GV_Productos_Column0"].ToString();
-        GV_Productos.HeaderRow.Cells[1].Text = compIdioma["GV_Productos_Column1"].ToString();
-        GV_Productos.HeaderRow.Cells[2].Text = compIdioma["GV_Productos_Column2"].ToString();
-        GV_Productos.HeaderRow.Cells[3].Text = compIdioma["GV_Productos_Column3"].ToString();
-        GV_Productos.HeaderRow.Cells[4].Text = compIdioma["GV_Productos_Column4"].ToString();
-        GV_Productos.HeaderRow.Cells[5].Text = compIdioma["GV_Productos_Column5"].ToString();
+        L_AgregarProducto.Text = compIdioma[L_AgregarProducto.ID].ToString();
+        L_VerProductos.Text = compIdioma[L_VerProductos.ID].ToString();
+        L_EditarProductos.Text = compIdioma[L_EditarProductos.ID].ToString();
+        try
+        {
+            GV_Productos.HeaderRow.Cells[0].Text = compIdioma["GV_Productos_Column0"].ToString();
+            GV_Productos.HeaderRow.Cells[1].Text = compIdioma["GV_Productos_Column1"].ToString();
+            GV_Productos.HeaderRow.Cells[2].Text = compIdioma["GV_Productos_Column2"].ToString();
+            GV_Productos.HeaderRow.Cells[3].Text = compIdioma["GV_Productos_Column3"].ToString();
+            GV_Productos.HeaderRow.Cells[4].Text = compIdioma["GV_Productos_Column4"].ToString();
+            GV_Productos.HeaderRow.Cells[5].Text = compIdioma["GV_Productos_Column5"].ToString();
+        }
+        catch(Exception ex)
+        {
+
+        }
     }
 
     protected void B_AgregarProducto_Click(object sender, EventArgs e)

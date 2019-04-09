@@ -6,7 +6,7 @@
     <ajaxToolkit:TabContainer ID="TabContainer1" runat="server" ActiveTabIndex="0" Height="289px" Width="570px">
         <ajaxToolkit:TabPanel ID="TabPanel1" runat="server" HeaderText="TabPanel1">
             <HeaderTemplate>
-                Agregar Sede
+               <asp:Label ID="L_AgregarSede" runat="server"></asp:Label>
             </HeaderTemplate>
             <ContentTemplate>
                 <table class="auto-style1">
@@ -45,7 +45,7 @@
         </ajaxToolkit:TabPanel>
         <ajaxToolkit:TabPanel ID="TabPanel2" runat="server" HeaderText="TabPanel2">
             <HeaderTemplate>
-                Ver/Eliminar Sedes
+                <asp:Label ID="L_VerEliminarSedes" runat="server"></asp:Label>
             </HeaderTemplate>
             <ContentTemplate>
                 <asp:GridView ID="GV_Sedes" runat="server" AllowPaging="True" AutoGenerateColumns="False" BackColor="White" BorderColor="#3366CC" BorderStyle="None" BorderWidth="1px" CellPadding="4" OnPageIndexChanging="GV_Sedes_PageIndexChanging" OnRowCommand="GridView1_RowCommand" OnRowDataBound="GV_Sedes_RowDataBound" OnRowDeleting="GridView1_RowDeleting" OnSelectedIndexChanged="GridView1_SelectedIndexChanged" PageSize="6">

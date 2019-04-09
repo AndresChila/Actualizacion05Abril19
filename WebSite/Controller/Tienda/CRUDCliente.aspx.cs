@@ -35,18 +35,28 @@ public partial class View_Tienda_CRUDClient : System.Web.UI.Page
         L_Editar.Text = compIdioma[L_Editar.ID].ToString();
         B_Actualizar.Text = compIdioma[B_Actualizar.ID].ToString();
         B_Agregar.Text = compIdioma[B_Agregar.ID].ToString();
+        L_AgregarCliente.Text = compIdioma[L_AgregarCliente.ID].ToString();
+        L_MisClientes.Text = compIdioma[L_MisClientes.ID].ToString();
+        L_EditarCliente.Text = compIdioma[L_EditarCliente.ID].ToString();
         DDL_Sexo.Items.Add(compIdioma["DDL_Sexo_Item0"].ToString());
         DDL_Sexo.Items.Add(compIdioma["DDL_Sexo_Item1"].ToString());
         DDL_Sexo0.Items.Add(compIdioma["DDL_Sexo0_Item0"].ToString());
         DDL_Sexo0.Items.Add(compIdioma["DDL_Sexo0_Item1"].ToString());
-        GV_Clientes.HeaderRow.Cells[0].Text = compIdioma["GV_Clientes_Column0"].ToString();
-        GV_Clientes.HeaderRow.Cells[1].Text = compIdioma["GV_Clientes_Column1"].ToString();
-        GV_Clientes.HeaderRow.Cells[2].Text = compIdioma["GV_Clientes_Column2"].ToString();
-        GV_Clientes.HeaderRow.Cells[3].Text = compIdioma["GV_Clientes_Column3"].ToString();
-        GV_Clientes.HeaderRow.Cells[4].Text = compIdioma["GV_Clientes_Column4"].ToString();
-        GV_Clientes.HeaderRow.Cells[5].Text = compIdioma["GV_Clientes_Column5"].ToString();
-        GV_Clientes.HeaderRow.Cells[6].Text = compIdioma["GV_Clientes_Column6"].ToString();
-        GV_Clientes.HeaderRow.Cells[7].Text = compIdioma["GV_Clientes_Column7"].ToString();
+        try
+        {
+            GV_Clientes.HeaderRow.Cells[0].Text = compIdioma["GV_Clientes_Column0"].ToString();
+            GV_Clientes.HeaderRow.Cells[1].Text = compIdioma["GV_Clientes_Column1"].ToString();
+            GV_Clientes.HeaderRow.Cells[2].Text = compIdioma["GV_Clientes_Column2"].ToString();
+            GV_Clientes.HeaderRow.Cells[3].Text = compIdioma["GV_Clientes_Column3"].ToString();
+            GV_Clientes.HeaderRow.Cells[4].Text = compIdioma["GV_Clientes_Column4"].ToString();
+            GV_Clientes.HeaderRow.Cells[5].Text = compIdioma["GV_Clientes_Column5"].ToString();
+            GV_Clientes.HeaderRow.Cells[6].Text = compIdioma["GV_Clientes_Column6"].ToString();
+            GV_Clientes.HeaderRow.Cells[7].Text = compIdioma["GV_Clientes_Column7"].ToString();
+        }
+        catch(Exception ex)
+        {
+
+        }
 
     }
 

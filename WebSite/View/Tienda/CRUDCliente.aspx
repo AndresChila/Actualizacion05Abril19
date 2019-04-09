@@ -28,7 +28,7 @@
     <ajaxToolkit:TabContainer ID="TabContainer1" runat="server" ActiveTabIndex="2" Height="328px" Width="776px">
         <ajaxToolkit:TabPanel ID="TabPanel1" runat="server" HeaderText="TabPanel1">
             <HeaderTemplate>
-                Agregar Cliente
+                <asp:Label ID="L_AgregarCliente" runat="server"></asp:Label>
             </HeaderTemplate>
             <ContentTemplate>
                 <table class="auto-style16">
@@ -92,7 +92,7 @@
         </ajaxToolkit:TabPanel>
         <ajaxToolkit:TabPanel ID="TabPanel2" runat="server" HeaderText="TabPanel2">
             <HeaderTemplate>
-                Mis Clientes
+                <asp:Label ID="L_MisClientes" runat="server"></asp:Label>
             </HeaderTemplate>
             <ContentTemplate>
                 <table class="auto-style16">
@@ -152,7 +152,7 @@
         </ajaxToolkit:TabPanel>
         <ajaxToolkit:TabPanel ID="TabPanel3" runat="server" HeaderText="TabPanel3">
             <HeaderTemplate>
-                Editar Cliente
+                <asp:Label ID="L_EditarCliente" runat="server"></asp:Label>
             </HeaderTemplate>
             <ContentTemplate>
                 <table class="auto-style16">

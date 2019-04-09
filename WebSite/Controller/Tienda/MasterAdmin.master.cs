@@ -34,7 +34,7 @@ public partial class View_Tienda_MasterAdmin : System.Web.UI.MasterPage
         LB_Vendedor.Text= compIdioma[LB_Vendedor.ID].ToString();
         LB_VerPedidos.Text = compIdioma[LB_VerPedidos.ID].ToString(); ;
         B_CerrarSesion.Text = compIdioma[B_CerrarSesion.ID].ToString();
-
+        L_Pedidos.Text = compIdioma[L_Pedidos.ID].ToString();
     }
 
     protected void LinkButton8_Click(object sender, EventArgs e)

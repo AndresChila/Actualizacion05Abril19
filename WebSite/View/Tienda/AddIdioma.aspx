@@ -78,7 +78,7 @@
                 <td class="auto-style21">
                     <asp:Label ID="L_VistaT" runat="server"></asp:Label>
                     <br />
-                    <asp:DropDownList ID="DDL_VistaT" runat="server">
+                    <asp:DropDownList ID="DDL_VistaT" runat="server" AutoPostBack="True" OnTextChanged="DDL_VistaT_TextChanged">
                     </asp:DropDownList>
                 </td>
                 <td class="auto-style21">
@@ -114,7 +114,7 @@
                 <td class="auto-style22">
                     <asp:Label ID="L_VistaA" runat="server"></asp:Label>
                     <br />
-                    <asp:DropDownList ID="DDL_VistaA" runat="server">
+                    <asp:DropDownList ID="DDL_VistaA" runat="server" AutoPostBack="True" OnTextChanged="DDL_VistaA_TextChanged">
                     </asp:DropDownList>
                 </td>
                 <td class="auto-style22">

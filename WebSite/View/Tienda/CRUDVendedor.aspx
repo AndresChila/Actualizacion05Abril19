@@ -37,10 +37,10 @@
     </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
-    <ajaxToolkit:TabContainer ID="TabContainer1" runat="server" ActiveTabIndex="0" Height="328px" Width="703px">
+    <ajaxToolkit:TabContainer ID="TabContainer1" runat="server" ActiveTabIndex="1" Height="328px" Width="703px">
         <ajaxToolkit:TabPanel runat="server" HeaderText="TabPanel1" ID="TabPanel1">
             <HeaderTemplate>
-                Agregar Vendedor
+                <asp:Label ID="L_AgregarVendedor" runat="server"></asp:Label>
             </HeaderTemplate>
             <ContentTemplate>
                 <table class="auto-style16">
@@ -79,7 +79,7 @@
                                 PreferredPasswordLength="5" 
                                 PrefixText="Seguridad: " 
                                 TargetControlID="TB_Clave"
-                                TextStrengthDescriptionStyles="muy_debil;debil;media;fuerte;irrompible"
+                                TextStrengthDescriptionStyles="muy_debil;debil;media;fuerte;irrompible" StrengthStyles="muy_debil;debil;media;fuerte;irrompible"
                                 />
                         </td>
                     </tr>
@@ -128,7 +128,7 @@
         </ajaxToolkit:TabPanel>
         <ajaxToolkit:TabPanel ID="TabPanel2" runat="server" HeaderText="TabPanel2">
             <HeaderTemplate>
-                Vendedores de la sede
+                <asp:Label ID="L_VendedoresDeLaSede" runat="server"></asp:Label>
             </HeaderTemplate>
             <ContentTemplate>
                 <asp:GridView ID="GV_Usuarios" runat="server" AutoGenerateColumns="False" BackColor="White" BorderColor="#3366CC" BorderStyle="None" BorderWidth="1px" CellPadding="4" CssClass="auto-style10" EmptyDataText="No hay productos ingresados." OnRowCommand="GV_Usuarios_RowCommand">
@@ -214,7 +214,7 @@
         </ajaxToolkit:TabPanel>
         <ajaxToolkit:TabPanel ID="TabPanel3" runat="server" HeaderText="TabPanel3">
             <HeaderTemplate>
-                Editar Vendedor
+                <asp:Label ID="L_EditarVendedor" runat="server"></asp:Label>
             </HeaderTemplate>
             <ContentTemplate>
                 <table class="auto-style16">
@@ -289,4 +289,5 @@
             </ContentTemplate>
         </ajaxToolkit:TabPanel>
     </ajaxToolkit:TabContainer>
+    
 </asp:Content>

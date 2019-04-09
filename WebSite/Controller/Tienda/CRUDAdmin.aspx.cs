@@ -53,6 +53,9 @@ public partial class View_Tienda_CRUDAdmi : System.Web.UI.Page
         B_Cancelar.Text = compIdioma[B_Cancelar.ID].ToString();
         B_Cancelar0.Text = compIdioma[B_Cancelar0.ID].ToString();
         B_Actualizar.Text = compIdioma[B_Actualizar.ID].ToString();
+        L_AgregarAdmin.Text = compIdioma[L_AgregarAdmin.ID].ToString();
+        L_VerAdmins.Text = compIdioma[L_VerAdmins.ID].ToString();
+        L_EditarAdmins.Text = compIdioma[L_EditarAdmins.ID].ToString();
         
         try
         {

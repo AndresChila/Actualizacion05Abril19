@@ -33,6 +33,9 @@ public partial class View_Tienda_MasterTienda : System.Web.UI.MasterPage
         LB_CRUDProducto.Text = compIdioma[LB_CRUDProducto.ID].ToString();
         B_CerrarSesion.Text = compIdioma[B_CerrarSesion.ID].ToString();
         LB_Idioma.Text = compIdioma[LB_Idioma.ID].ToString();
+        Label4.Text = compIdioma[Label4.ID].ToString();
+        Label5.Text = compIdioma[Label5.ID].ToString();
+
 
         this.panel_validacion();
     }

@@ -12,6 +12,8 @@ public partial class View_Tienda_AddIdioma : System.Web.UI.Page
     List<string> compAct = new List<string>();
     List<string> compViejo= new List<string>();
     List<string> listaVista = new List<string>();
+    List<string> listaViewsVV = new List<string>();
+    List<string> listaViewsNN = new List<string>();
     AddIdioma add;
     Hashtable compIdioma = new Hashtable();
     protected void Page_Load(object sender, EventArgs e)
@@ -39,21 +41,24 @@ public partial class View_Tienda_AddIdioma : System.Web.UI.Page
     protected void B_Comprobar_Click(object sender, EventArgs e)
     {
         add = new AddIdioma(Session["idioma"].ToString());
-        add.ValidarExistente(TB_Nombre.Text.ToString(), TB_Terminacion.Text.ToString());
-        compAct = add.getListaAct();
-        DDL_Actual.DataSource = compAct;
-        DDL_Actual.DataBind();
-        compViejo = add.getListaParaAct();
-        DDL_Viejos.DataSource = compViejo;
-        DDL_Viejos.DataBind();
+        add.ValidarExistente(TB_Nombre.Text.ToString(), TB_Terminacion.Text.ToString(), null);
+        listaViewsVV = add.ParaListaVistaEscojida();
+        DDL_VistaA.DataSource = listaViewsVV;
+        DDL_VistaA.DataBind();
+        listaViewsNN = add.ParaListaVistaActual();
+        DDL_VistaT.DataSource = listaViewsNN;
+        DDL_VistaT.DataBind();
         B_Guardar.Enabled = true;
         Panel1.Visible = true;
+#pragma warning disable CS0618 // Type or member is obsolete
+        RegisterStartupScript("mensaje", "<script type='text/javascript'>alert('" + add.GetAlerta() + "');</script>");
+#pragma warning restore CS0618 // Type or member is obsolete
     }
 
     protected void B_Guardar_Click(object sender, EventArgs e)
     {
         add = new AddIdioma(Session["idioma"].ToString());
-        add.ValidarExistente(TB_Nombre.Text.ToString(), TB_Terminacion.Text.ToString());
+        add.ValidarExistente(TB_Nombre.Text.ToString(), TB_Terminacion.Text.ToString(), DDL_VistaA.SelectedValue.ToString());
         add.ActualizarIdioma(DDL_Actual.SelectedItem.ToString(), TB_Traduccion.Text.ToString());
         DDL_Actual.Items.Remove(DDL_Actual.SelectedItem.ToString());
         DDL_Actual.Items.Clear();
@@ -65,14 +70,17 @@ public partial class View_Tienda_AddIdioma : System.Web.UI.Page
         compViejo = add.getListaParaAct();
         DDL_Viejos.DataSource = compViejo;
         DDL_Viejos.DataBind();
+#pragma warning disable CS0618 // Type or member is obsolete
+        RegisterStartupScript("mensaje", "<script type='text/javascript'>alert('" + add.GetAlerta() + "');</script>");
+#pragma warning restore CS0618 // Type or member is obsolete
     }
 
     protected void B_Actualizar_Click(object sender, EventArgs e)
     {
         add = new AddIdioma(Session["idioma"].ToString());
-        add.ValidarExistente(TB_Nombre.Text.ToString(), TB_Terminacion.Text.ToString());
+        add.ValidarExistente(TB_Nombre.Text.ToString(), TB_Terminacion.Text.ToString(), DDL_VistaT.SelectedValue.ToString());
         add.ActualizarIdioma(DDL_Viejos.SelectedItem.ToString(), TB_Actualizar.Text.ToString());
-        DDL_Actual.Items.Remove(DDL_Actual.SelectedItem.ToString());
+        //DDL_Actual.Items.Remove(DDL_Actual.SelectedItem.ToString());
         DDL_Actual.Items.Clear();
         compAct = add.getListaAct();
         DDL_Actual.DataSource = compAct;
@@ -82,12 +90,15 @@ public partial class View_Tienda_AddIdioma : System.Web.UI.Page
         compViejo = add.getListaParaAct();
         DDL_Viejos.DataSource = compViejo;
         DDL_Viejos.DataBind();
+#pragma warning disable CS0618 // Type or member is obsolete
+        RegisterStartupScript("mensaje", "<script type='text/javascript'>alert('" + add.GetAlerta() + "');</script>");
+#pragma warning restore CS0618 // Type or member is obsolete
     }
 
     protected void Button1_Click(object sender, EventArgs e)
     {
         add = new AddIdioma(Session["idioma"].ToString());
-        add.ValidarExistente(TB_Nombre.Text.ToString(), TB_Terminacion.Text.ToString());
+        add.ValidarExistente(TB_Nombre.Text.ToString(), TB_Terminacion.Text.ToString(), null);
         add.BorrarALV();
         TB_Nombre.Text = "";
         TB_Terminacion.Text = "";
@@ -98,6 +109,28 @@ public partial class View_Tienda_AddIdioma : System.Web.UI.Page
         DDL_Actual.DataBind();
         DDL_Viejos.Items.Clear();
         DDL_Viejos.DataSource = null;
+        DDL_Viejos.DataBind();
+#pragma warning disable CS0618 // Type or member is obsolete
+        RegisterStartupScript("mensaje", "<script type='text/javascript'>alert('" + add.GetAlerta() + "');</script>");
+#pragma warning restore CS0618 // Type or member is obsolete
+    }
+
+    protected void DDL_VistaT_TextChanged(object sender, EventArgs e)
+    {
+        add = new AddIdioma(Session["idioma"].ToString());
+        add.ValidarExistente(TB_Nombre.Text.ToString(), TB_Terminacion.Text.ToString(), DDL_VistaT.SelectedValue.ToString());
+        compAct = add.getListaAct();
+        DDL_Actual.DataSource = compAct;
+        DDL_Actual.DataBind();
+ 
+    }
+
+    protected void DDL_VistaA_TextChanged(object sender, EventArgs e)
+    {
+        add = new AddIdioma(Session["idioma"].ToString());
+        add.ValidarExistente(TB_Nombre.Text.ToString(), TB_Terminacion.Text.ToString(), DDL_VistaA.SelectedValue.ToString());
+        compViejo = add.getListaParaAct();
+        DDL_Viejos.DataSource = compViejo;
         DDL_Viejos.DataBind();
     }
 }

@@ -27,7 +27,9 @@ public partial class View_Tienda_CRUDVendedo : System.Web.UI.Page
         L_Telefono.Text = compIdioma[L_Telefono.ID].ToString();
         L_Sexo.Text = compIdioma[L_Sexo.ID].ToString();
         L_Correo.Text = compIdioma[L_Correo.ID].ToString();
-
+        L_AgregarVendedor.Text = compIdioma[L_AgregarVendedor.ID].ToString();
+        L_VendedoresDeLaSede.Text = compIdioma[L_VendedoresDeLaSede.ID].ToString();
+        L_EditarVendedor.Text = compIdioma[L_EditarVendedor.ID].ToString();
 
         L_Cedula0.Text = compIdioma[L_Cedula0.ID].ToString();
         L_Nombre0.Text = compIdioma[L_Nombre0.ID].ToString();

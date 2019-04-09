@@ -17,7 +17,7 @@ namespace Logica
         DataTable paraultimoComp = new DataTable();
         DataTable paraultimoIdi = new DataTable();
         DataTable sinTraducirComp = new DataTable();
-        int sesionIdiomaAct, sesionIdiomaEsc;
+        int sesionIdiomaAct, sesionIdiomaEsc, viewEsc;
         int soloComp = 0, ultimoComp = 0, ultimoIdi=0;
         int ultimoMen = 0;
         DataTable mensajes = new DataTable();
@@ -27,6 +27,11 @@ namespace Logica
         List<string> compoSinTrad = new List<string>();
         List<string> compoAct = new List<string>();
         List<string> paraAct = new List<string>();
+        DataTable formularioAct = new DataTable();
+        DataTable formularioEsc = new DataTable();
+        List<string> lisForm = new List<string>();
+        string alerta = "";
+        Hashtable mensa = new Hashtable();
         public AddIdioma(string StrIdioma)
         {
             DataTable idi = new DataTable();
@@ -39,9 +44,10 @@ namespace Logica
                 }
             }
         }
-        public void ValidarExistente(string idioma, string terminacion)
+        public void ValidarExistente(string idioma, string terminacion, string view)
         {
             this.idioma = idioma;
+            mensajesTrad(sesionIdiomaAct, 25);
             if (validarCajas(idioma, terminacion))
             {
                 tablaidi = dao.traerIdioma();
@@ -50,12 +56,15 @@ namespace Logica
                     if (tablaidi.Rows[i]["nombre"].ToString().ToLower() == idioma.ToLower() || tablaidi.Rows[i]["terminacion"].ToString().ToLower() == terminacion.ToLower())
                     {
                         soloComp = 1;
+                        alerta = mensa["1"].ToString();
                     }
                 }
                 if (soloComp == 1)
                 {
                     DataTable idi = new DataTable();
                     idi = dao.traerIdioma();
+                    
+                    
                     for (int i = 0; i < idi.Rows.Count; i++)
                     {
                         if (idi.Rows[i]["nombre"].ToString().ToLower() == idioma.ToLower())
@@ -63,17 +72,33 @@ namespace Logica
                             sesionIdiomaEsc = int.Parse(idi.Rows[i]["id"].ToString());
                         }
                     }
+                    formularioAct = dao.traerViews(sesionIdiomaAct);
+                    for (int i = 0; i < formularioAct.Rows.Count; i++)
+                    {
+                        if (formularioAct.Rows[i]["texto"].ToString() == view)
+                        {
+                            viewEsc = int.Parse(formularioAct.Rows[i]["control"].ToString());
+                        }
+                    }
+                    formularioEsc = dao.traerViews(sesionIdiomaEsc);
+                    for (int i = 0; i < formularioEsc.Rows.Count; i++)
+                    {
+                        if (formularioEsc.Rows[i]["texto"].ToString() == view)
+                        {
+                            viewEsc = int.Parse(formularioEsc.Rows[i]["control"].ToString());
+                        }
+                    }
                     sinTraducirComp = dao.traerTodosComponentesUnIdioma(sesionIdiomaEsc);
                     componentes = dao.traerTodosComponentesUnIdioma(sesionIdiomaAct);
-                    sinTraducirMen = dao.traerTodosMensajesUnIdioma(sesionIdiomaEsc);
-                    mensajes = dao.traerTodosMensajesUnIdioma(sesionIdiomaAct);
+                    sinTraducirMen = dao.traerTodosMensajesUnIdioma(sesionIdiomaEsc, viewEsc);
+                    mensajes = dao.traerTodosMensajesUnIdioma(sesionIdiomaAct, viewEsc);
                     HacerListaSinTrad();
                     HacerListaSinTradNueva();
                 }
                 else
                 {
                     componentes = dao.traerTodosComponentesUnIdioma(sesionIdiomaAct);
-                    mensajes = dao.traerTodosMensajesUnIdioma(sesionIdiomaAct);
+                    mensajes = dao.traerTodosMensajesUnIdioma(sesionIdiomaAct, viewEsc);
                     
                     
                     paraultimoIdi = dao.traerUltimoIDIdi();
@@ -93,6 +118,7 @@ namespace Logica
                         ultimoMen = int.Parse(paraultimoMen.Rows[0]["id"].ToString()) + 1;
                         dao.crearMensaje(ultimoMen, mensajes.Rows[i]["nombre"].ToString(), int.Parse(mensajes.Rows[i]["msj"].ToString()), ultimoIdi, int.Parse(mensajes.Rows[i]["clase"].ToString()));
                     }
+                    alerta = mensa["2"].ToString();
                 }
             }
         }
@@ -102,13 +128,26 @@ namespace Logica
         }
         public void HacerListaSinTrad()
         {
-            
-            for(int i =0; i < componentes.Rows.Count; i++)
+            try
             {
-                if (sinTraducirComp.Rows[i]["texto"].ToString() == "")
+                for (int i = 0; i < componentes.Rows.Count; i++)
                 {
-                    compoAct.Add(componentes.Rows[i]["texto"].ToString());
+                    if (sinTraducirComp.Rows[i]["texto"].ToString() == "" && int.Parse(sinTraducirComp.Rows[i]["formulario_id"].ToString()) == viewEsc)
+                    {
+                        compoAct.Add(componentes.Rows[i]["texto"].ToString());
+                    }
+
                 }
+                for (int i = 0; i < mensajes.Rows.Count; i++)
+                {
+                    if (sinTraducirMen.Rows[i]["texto"].ToString() == "")
+                    {
+                        compoAct.Add(mensajes.Rows[i]["texto"].ToString());
+                    }
+                }
+            }
+            catch(Exception ex)
+            {
 
             }
 
@@ -135,6 +174,7 @@ namespace Logica
                         dao.ActualizarIdioma(sesionIdiomaEsc, controlNuevo, texto);
                     }
                 }
+                alerta = mensa["3"].ToString();
                 componentes = dao.traerTodosComponentesUnIdioma(sesionIdiomaAct);
                 HacerListaSinTrad();
             }
@@ -144,6 +184,7 @@ namespace Logica
         {
             if(idioma=="" || terminacion == "")
             {
+                alerta = mensa["4"].ToString();
                 return false;
             }
             else
@@ -156,6 +197,7 @@ namespace Logica
         {
             if (texto == "")
             {
+                alerta = mensa["5"].ToString();
                 return false;
             }
             else
@@ -184,13 +226,26 @@ namespace Logica
         }
         public void HacerListaSinTradNueva()
         {
-
-            for (int i = 0; i < componentes.Rows.Count; i++)
+            try
             {
-                if (sinTraducirComp.Rows[i]["texto"].ToString() != "")
+                for (int i = 0; i < componentes.Rows.Count; i++)
                 {
-                    paraAct.Add(componentes.Rows[i]["texto"].ToString());
+                    if (sinTraducirComp.Rows[i]["texto"].ToString() != "" && int.Parse(sinTraducirComp.Rows[i]["formulario_id"].ToString()) == viewEsc)
+                    {
+                        paraAct.Add(componentes.Rows[i]["texto"].ToString());
+                    }
+
                 }
+                for (int i = 0; i < mensajes.Rows.Count; i++)
+                {
+                    if (sinTraducirMen.Rows[i]["texto"].ToString() != "")
+                    {
+                        paraAct.Add(mensajes.Rows[i]["texto"].ToString());
+                    }
+                }
+            }
+            catch(Exception ex)
+            {
 
             }
 
@@ -204,13 +259,14 @@ namespace Logica
         {
             if (sesionIdiomaEsc == 1 | sesionIdiomaEsc == 2)
             {
-                //:)es asi
+                alerta = mensa["6"].ToString();
             } 
             else
             {
                 dao.EliminarMensajesIdioma(sesionIdiomaEsc);
                 dao.EliminarCompoIdioma(sesionIdiomaEsc);
                 dao.EliminarIdioma(sesionIdiomaEsc);
+                alerta = mensa["7"].ToString();
             }
         }
         int kIdioma;
@@ -235,11 +291,43 @@ namespace Logica
             }
             return compIdioma;
         }
-        public List<string> ParaListaVista()
+        public List<string> ParaListaVistaActual()
         {
             List<string> lista = new List<string>();
-
+            DataTable a = dao.traerViews(sesionIdiomaAct);
+            lista.Add("  ---  ");
+            for(int i =0; i< a.Rows.Count; i++)
+            {
+                lista.Add(a.Rows[i]["texto"].ToString());
+            }
             return lista;
+        }
+        public List<string> ParaListaVistaEscojida()
+        {
+            List<string> lista = new List<string>();
+            DataTable a = dao.traerViews(sesionIdiomaEsc);
+            lista.Add("  ---  ");
+            for (int i = 0; i < a.Rows.Count; i++)
+            {
+                lista.Add(a.Rows[i]["texto"].ToString());
+            }
+            return lista;
+        }
+        public string GetAlerta()
+        {
+            return alerta;
+        }
+
+        public void mensajesTrad(int idioma, int constante)
+        {
+            DAOUsuario dao = new DAOUsuario();
+
+            DataTable mss = new DataTable();
+            mss = dao.traerMensajes(idioma, constante);
+            for (int i = 0; i < mss.Rows.Count; i++)
+            {
+                mensa.Add(mss.Rows[i]["msj"].ToString(), mss.Rows[i]["texto"].ToString());
+            }
         }
     }
     

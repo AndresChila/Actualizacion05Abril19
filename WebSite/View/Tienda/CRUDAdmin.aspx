@@ -49,7 +49,7 @@
     <ajaxToolkit:TabContainer ID="TabContainer1" runat="server" ActiveTabIndex="2" Height="350px" Width="753px">
         <ajaxToolkit:TabPanel runat="server" HeaderText="TabPanel1" ID="TabPanel1">
             <HeaderTemplate>
-                Agregar Admin
+                <asp:Label ID="L_AgregarAdmin" runat="server"></asp:Label>
             </HeaderTemplate>
             <ContentTemplate>
                 <table class="auto-style1">
@@ -132,7 +132,7 @@
         </ajaxToolkit:TabPanel>
         <ajaxToolkit:TabPanel ID="TabPanel2" runat="server" HeaderText="TabPanel2">
             <HeaderTemplate>
-                Ver Admins
+                <asp:Label ID="L_VerAdmins" runat="server"></asp:Label>
             </HeaderTemplate>
             <ContentTemplate>
                 <table class="auto-style1">
@@ -220,7 +220,7 @@
         </ajaxToolkit:TabPanel>
         <ajaxToolkit:TabPanel ID="TabPanel3" runat="server" HeaderText="TabPanel3">
             <HeaderTemplate>
-                Ediitar Admin
+               <asp:Label ID="L_EditarAdmins" runat="server"></asp:Label>
             </HeaderTemplate>
             <ContentTemplate>
                 <asp:Panel ID="PanelEditar" runat="server" Enabled="False" Height="215px" Width="452px">

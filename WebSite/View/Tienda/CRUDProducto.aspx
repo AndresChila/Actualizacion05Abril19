@@ -33,7 +33,7 @@
     <ajaxToolkit:TabContainer ID="TabContainer1" runat="server" ActiveTabIndex="0" Height="270px" Width="618px">
         <ajaxToolkit:TabPanel runat="server" HeaderText="TabPanel1" ID="TabPanel1">
             <HeaderTemplate>
-                Agregar Producto
+                <asp:Label ID="L_AgregarProducto" runat="server"></asp:Label>
             </HeaderTemplate>
             <ContentTemplate>
                 <asp:Panel ID="Panel3" runat="server" Height="171px" Width="557px">
@@ -109,7 +109,7 @@
         </ajaxToolkit:TabPanel>
         <ajaxToolkit:TabPanel ID="TabPanel2" runat="server" HeaderText="TabPanel2">
             <HeaderTemplate>
-                Ver Productos<br />
+               <asp:Label ID="L_VerProductos" runat="server"></asp:Label><br />
             </HeaderTemplate>
             <ContentTemplate>
                 <asp:Panel ID="Panel4" runat="server" Height="223px">
@@ -179,7 +179,7 @@
         </ajaxToolkit:TabPanel>
         <ajaxToolkit:TabPanel ID="TabPanel3" runat="server" HeaderText="TabPanel3">
             <HeaderTemplate>
-                Editar Productos
+                <asp:Label ID="L_EditarProductos" runat="server"></asp:Label>
             </HeaderTemplate>
             <ContentTemplate>
                 <asp:Panel ID="Panel5" runat="server" Height="164px">

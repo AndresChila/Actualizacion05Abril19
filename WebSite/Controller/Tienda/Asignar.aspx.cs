@@ -41,7 +41,9 @@ public partial class View_Tienda_Asigna : System.Web.UI.Page
         B_Agregar.Text = compIdioma[B_Agregar.ID].ToString();
         L_Sede.Text = compIdioma[L_Sede.ID].ToString();
         B_Asignar.Text = compIdioma[B_Asignar.ID].ToString();
-
+        L_Bodega.Text = compIdioma[L_Bodega.ID].ToString();
+        L_AsignacionesPendientes.Text = compIdioma[L_AsignacionesPendientes.ID].ToString();
+        L_AsignarSinPedido.Text = compIdioma[L_AsignarSinPedido.ID].ToString();
     }
 
     String compara

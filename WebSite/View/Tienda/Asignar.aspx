@@ -80,7 +80,7 @@
     <ajaxToolkit:TabContainer ID="TabContainer1" runat="server" ActiveTabIndex="2" Height="509px" Width="665px">
         <ajaxToolkit:TabPanel ID="TabPanel1" runat="server" HeaderText="TabPanel1">
             <HeaderTemplate>
-                Bodega
+                <asp:Label ID="L_Bodega" runat="server"></asp:Label>
             </HeaderTemplate>
             <ContentTemplate>
                 <table class="auto-style1">
@@ -113,7 +113,7 @@
         </ajaxToolkit:TabPanel>
         <ajaxToolkit:TabPanel ID="TabPanel2" runat="server" HeaderText="TabPanel2">
             <HeaderTemplate>
-                Asignaciones Pendientes
+                <asp:Label ID="L_AsignacionesPendientes" runat="server"></asp:Label>
             </HeaderTemplate>
             <ContentTemplate>
                 <table class="auto-style1">
@@ -201,7 +201,7 @@
         </ajaxToolkit:TabPanel>
         <ajaxToolkit:TabPanel ID="TabPanel3" runat="server" HeaderText="TabPanel3">
             <HeaderTemplate>
-                Asignar sin Pedido
+                <asp:Label ID="L_AsignarSinPedido" runat="server"></asp:Label>
             </HeaderTemplate>
             <ContentTemplate>
                 <table class="auto-style1">
